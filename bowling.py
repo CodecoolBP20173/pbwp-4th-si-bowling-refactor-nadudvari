@@ -3,6 +3,7 @@ def score(game):
     frame = 1
     in_first_half = True
     for i, v in enumerate(game):
+        last = get_value(game[i - 1])
         if game[i] == '/':
             result += 10 - last
         else:
@@ -16,7 +17,6 @@ def score(game):
                     result += 10 - get_value(game[i+1])
                 else:
                     result += get_value(game[i+2])
-        last = get_value(game[i])
         if not in_first_half:
             frame += 1
         if in_first_half is True:
