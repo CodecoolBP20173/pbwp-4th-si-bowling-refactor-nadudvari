@@ -1,12 +1,15 @@
 def score(game):
+
     result = 0
     frame = 1
     in_first_half = True
+
     for i, score in enumerate(game):
         if score == '/':
             result += 10 - get_value(game[i - 1])
         else:
             result += get_value(score)
+
         if frame < 10 and get_value(score) == 10:
             if game[i] == '/':
                 result += get_value(game[i + 1])
@@ -16,6 +19,7 @@ def score(game):
                     result += 10 - get_value(game[i + 1])
                 else:
                     result += get_value(game[i + 2])
+
         if not in_first_half:
             frame += 1
         if in_first_half is True:
@@ -29,11 +33,12 @@ def score(game):
 
 
 def get_value(char):        # Gives value to the given characters
-    if int(char) in range(1, 10):
-        return int(char)
-    elif char.upper() == 'X' or char == '/':
+
+    if char.upper() == 'X' or char == '/':
         return 10
     elif char == '-':
         return 0
+    elif int(char) in range(1, 10):
+        return int(char)
     else:
         raise ValueError()
