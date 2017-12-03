@@ -1,4 +1,4 @@
-def score(game):
+def score(game):        # Returns a score for given outcome of a bowling game
 
     result = 0
     frame = 1
